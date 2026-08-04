@@ -289,6 +289,16 @@ section h2{
     font-size:20px;
 
     margin:15px;
+    background:
+    linear-gradient(
+    rgba(7,20,38,.85),
+    rgba(7,20,38,.85)
+    ),
+    url("imagenes/servicios.jpg");
+
+    background-size:cover;
+
+    background-position:center;
 
 }
 
