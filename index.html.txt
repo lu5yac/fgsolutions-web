@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FG Solutions | Business Intelligence & AI Solutions</title>
+
+<meta name="description" content="FG Solutions impulsa empresas mediante Inteligencia Financiera, Automatización e Inteligencia Artificial.">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+FG <span>Solutions</span>
+</div>
+
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#servicios">Servicios</a>
+<a href="#empresa">Empresa</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+</header>
+
+
+<section id="inicio" class="hero">
+
+<div class="hero-text">
+
+<h1>
+Business Intelligence<br>
+& AI Solutions
+</h1>
+
+<h2>
+Impulsamos empresas mediante Inteligencia Financiera,
+Automatización e Inteligencia Artificial.
+</h2>
+
+<a class="boton" href="https://wa.me/5492994274794">
+Solicitar asesoramiento
+</a>
+
+</div>
+
+</section>
+
+
+
+<section id="servicios">
+
+<h2>Nuestros Servicios</h2>
+
+
+<div class="cards">
+
+
+<div class="card">
+<h3>Inteligencia Financiera</h3>
+<p>
+Análisis económico, indicadores KPI,
+control de gestión y herramientas para
+tomar mejores decisiones empresariales.
+</p>
+</div>
+
+
+<div class="card">
+<h3>Automatización de Procesos</h3>
+<p>
+Digitalización administrativa,
+optimización de tareas repetitivas
+y mejora de productividad.
+</p>
+</div>
+
+
+<div class="card">
+<h3>Inteligencia Artificial</h3>
+<p>
+Implementación de soluciones con IA,
+asistentes inteligentes y automatización
+comercial.
+</p>
+</div>
+
+
+<div class="card">
+<h3>Consultoría Empresarial</h3>
+<p>
+Diagnóstico, planificación estratégica
+y acompañamiento para crecimiento.
+</p>
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+<section id="empresa" class="empresa">
+
+<h2>FG Solutions</h2>
+
+<p>
+Soy <strong>FRIGERIO GUSTAVO</strong>,
+Socio Gerente y Contador Público.
+</p>
+
+<p>
+Ayudamos a empresas a transformar
+información en decisiones, procesos
+en eficiencia y tecnología en crecimiento.
+</p>
+
+</section>
+
+
+
+
+
+<section id="contacto">
+
+<h2>Contacto</h2>
+
+<p>
+📱 WhatsApp:
+<strong>+54 9 299 427 4794</strong>
+</p>
+
+
+<p>
+✉ Email:
+<strong>FGUSTAVOJ@YAHOO.COM.AR</strong>
+</p>
+
+
+<a class="boton" href="mailto:FGUSTAVOJ@YAHOO.COM.AR">
+Enviar consulta
+</a>
+
+
+</section>
+
+
+
+
+<footer>
+
+<p>
+© 2026 FG Solutions - Business Intelligence & AI Solutions
+</p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
