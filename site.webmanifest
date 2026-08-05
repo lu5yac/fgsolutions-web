@@ -1,0 +1,24 @@
+{
+  "name": "FG Solutions",
+  "short_name": "FG Solutions",
+  "description": "Business Intelligence, Automatización e Inteligencia Artificial para empresas.",
+  "start_url": "/FG_SOLUTIONS_WEB/",
+  "display": "standalone",
+  "background_color": "#0A1628",
+  "theme_color": "#0A1628",
+  "lang": "es-AR",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
