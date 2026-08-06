@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://fgsolutions.github.io/FG_SOLUTIONS_WEB/sitemap.xml
