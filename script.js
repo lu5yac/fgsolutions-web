@@ -1,27 +1,33 @@
 (function () {
   'use strict';
 
-  /* Header scroll effect */
-  var header = document.getElementById('header');
-  var lastScroll = 0;
+  var header = document.getElementById('siteHeader');
+  var progressBar = document.getElementById('scrollProgress');
+  var navToggle = document.getElementById('menuTrigger');
+  var mainNav = document.getElementById('siteNav');
+  var navLinks = document.querySelectorAll('.site-nav__link, .site-nav__ghost, .btn--compact');
 
   function onScroll() {
     var scrollY = window.scrollY;
-    if (scrollY > 50) {
-      header.classList.add('header--scrolled');
-    } else {
-      header.classList.remove('header--scrolled');
+    var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = maxScroll > 0 ? (scrollY / maxScroll) : 0;
+
+    if (header) {
+      header.classList.toggle('site-header--scrolled', scrollY > 24);
     }
-    lastScroll = scrollY;
+
+    if (progressBar) {
+      progressBar.style.transform = 'scaleX(' + Math.min(Math.max(progress, 0), 1) + ')';
+    }
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* Mobile navigation */
-  var navToggle = document.getElementById('navToggle');
-  var mainNav = document.getElementById('mainNav');
-  var navLinks = mainNav.querySelectorAll('.nav__link, .nav__cta');
+  if (!header || !navToggle || !mainNav) {
+    console.error('No se encontraron los elementos principales del sitio.');
+    return;
+  }
 
   navToggle.addEventListener('click', function () {
     var expanded = navToggle.getAttribute('aria-expanded') === 'true';
@@ -38,21 +44,17 @@
     });
   });
 
-  /* Scroll reveal */
-  var revealElements = document.querySelectorAll('.reveal');
+  var revealElements = document.querySelectorAll('[data-animate]');
 
   if ('IntersectionObserver' in window) {
-    var revealObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-    );
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     revealElements.forEach(function (el) {
       revealObserver.observe(el);
@@ -63,7 +65,6 @@
     });
   }
 
-  /* Counter animation */
   var counters = document.querySelectorAll('[data-count]');
   var countersStarted = false;
 
@@ -73,8 +74,7 @@
 
     counters.forEach(function (counter) {
       var target = parseInt(counter.getAttribute('data-count'), 10);
-      var duration = 2000;
-      var start = 0;
+      var duration = 1800;
       var startTime = null;
 
       function step(timestamp) {
@@ -94,48 +94,22 @@
   }
 
   if ('IntersectionObserver' in window) {
-    var statsSection = document.querySelector('.hero__stats');
-    if (statsSection) {
-      var statsObserver = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              animateCounters();
-              statsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-      statsObserver.observe(statsSection);
-    }
-  }
-
-  /* Active nav link on scroll */
-  var sections = document.querySelectorAll('section[id]');
-
-  function highlightNav() {
-    var scrollPos = window.scrollY + 120;
-
-    sections.forEach(function (section) {
-      var top = section.offsetTop;
-      var height = section.offsetHeight;
-      var id = section.getAttribute('id');
-
-      if (scrollPos >= top && scrollPos < top + height) {
-        navLinks.forEach(function (link) {
-          link.classList.remove('nav__link--active');
-          if (link.getAttribute('href') === '#' + id) {
-            link.classList.add('nav__link--active');
+    var heroMetrics = document.querySelector('.hero__metrics');
+    if (heroMetrics) {
+      var metricsObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            animateCounters();
+            metricsObserver.unobserve(entry.target);
           }
         });
-      }
-    });
+      }, { threshold: 0.4 });
+      metricsObserver.observe(heroMetrics);
+    }
+  } else {
+    animateCounters();
   }
 
-  window.addEventListener('scroll', highlightNav, { passive: true });
-
-  /* Smooth FAQ — close others when one opens */
   var faqItems = document.querySelectorAll('.faq-item');
 
   faqItems.forEach(function (item) {
@@ -150,7 +124,6 @@
     });
   });
 
-  /* Contact form enhancement */
   var contactForm = document.querySelector('.contact-form');
 
   if (contactForm) {
@@ -170,7 +143,7 @@
         'Mensaje:\n' + mensaje
       );
 
-      window.location.href = 'mailto:FGUSTAVOJ@YAHOO.COM.AR?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:fgustavoj@yahoo.com.ar?subject=' + subject + '&body=' + body;
     });
   }
 })();
