@@ -1,0 +1,40 @@
+name: Remove hero card
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  remove-card:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Remove presentation card from hero
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          old = '          <img src="imagenes/logo.png" class="hero__logo" alt="FG Solutions logo">\n'
+          new = '          <!-- Tarjeta de presentación oculta en la portada -->\n'
+          if old in s:
+              p.write_text(s.replace(old, new, 1), encoding='utf-8')
+          PY
+
+      - name: Commit correction
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "Ocultar tarjeta de presentación de la portada"
+            git push
+          fi
