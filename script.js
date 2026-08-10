@@ -11,14 +11,8 @@
     var scrollY = window.scrollY;
     var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
     var progress = maxScroll > 0 ? (scrollY / maxScroll) : 0;
-
-    if (header) {
-      header.classList.toggle('site-header--scrolled', scrollY > 24);
-    }
-
-    if (progressBar) {
-      progressBar.style.transform = 'scaleX(' + Math.min(Math.max(progress, 0), 1) + ')';
-    }
+    if (header) header.classList.toggle('site-header--scrolled', scrollY > 24);
+    if (progressBar) progressBar.style.transform = 'scaleX(' + Math.min(Math.max(progress, 0), 1) + ')';
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -45,7 +39,6 @@
   });
 
   var revealElements = document.querySelectorAll('[data-animate]');
-
   if ('IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -55,40 +48,28 @@
         }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-    revealElements.forEach(function (el) {
-      revealObserver.observe(el);
-    });
+    revealElements.forEach(function (el) { revealObserver.observe(el); });
   } else {
-    revealElements.forEach(function (el) {
-      el.classList.add('visible');
-    });
+    revealElements.forEach(function (el) { el.classList.add('visible'); });
   }
 
   var counters = document.querySelectorAll('[data-count]');
   var countersStarted = false;
-
   function animateCounters() {
     if (countersStarted) return;
     countersStarted = true;
-
     counters.forEach(function (counter) {
       var target = parseInt(counter.getAttribute('data-count'), 10);
       var duration = 1800;
       var startTime = null;
-
       function step(timestamp) {
         if (!startTime) startTime = timestamp;
         var progress = Math.min((timestamp - startTime) / duration, 1);
         var eased = 1 - Math.pow(1 - progress, 3);
         counter.textContent = Math.floor(eased * target);
-        if (progress < 1) {
-          requestAnimationFrame(step);
-        } else {
-          counter.textContent = target;
-        }
+        if (progress < 1) requestAnimationFrame(step);
+        else counter.textContent = target;
       }
-
       requestAnimationFrame(step);
     });
   }
@@ -111,39 +92,39 @@
   }
 
   var faqItems = document.querySelectorAll('.faq-item');
-
   faqItems.forEach(function (item) {
     item.addEventListener('toggle', function () {
       if (item.open) {
         faqItems.forEach(function (other) {
-          if (other !== item && other.open) {
-            other.open = false;
-          }
+          if (other !== item && other.open) other.open = false;
         });
       }
     });
   });
 
-  var contactForm = document.querySelector('.contact-form');
-
+  // Captación: el formulario real usa .contact__form. Antes buscaba .contact-form,
+  // por lo que las consultas nunca se enviaban. Ahora abre WhatsApp con todos los datos.
+  var contactForm = document.querySelector('.contact__form');
   if (contactForm) {
     contactForm.addEventListener('submit', function (e) {
       e.preventDefault();
+      var nombre = document.getElementById('nombre').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var empresa = document.getElementById('empresa').value.trim();
+      var mensaje = document.getElementById('mensaje').value.trim();
 
-      var nombre = document.getElementById('nombre').value;
-      var email = document.getElementById('email').value;
-      var empresa = document.getElementById('empresa').value;
-      var mensaje = document.getElementById('mensaje').value;
+      if (!nombre || !email || !mensaje) {
+        contactForm.reportValidity();
+        return;
+      }
 
-      var subject = encodeURIComponent('Consulta desde FG Solutions — ' + nombre);
-      var body = encodeURIComponent(
-        'Nombre: ' + nombre + '\n' +
-        'Email: ' + email + '\n' +
-        'Empresa: ' + (empresa || 'No especificada') + '\n\n' +
-        'Mensaje:\n' + mensaje
-      );
+      var texto = 'Hola Gustavo, quiero solicitar una consulta inicial con FG Solutions.%0A%0A' +
+        'Nombre: ' + encodeURIComponent(nombre) + '%0A' +
+        'Email: ' + encodeURIComponent(email) + '%0A' +
+        'Empresa: ' + encodeURIComponent(empresa || 'No especificada') + '%0A%0A' +
+        'Necesidad: ' + encodeURIComponent(mensaje);
 
-      window.location.href = 'mailto:fgustavoj@yahoo.com.ar?subject=' + subject + '&body=' + body;
+      window.location.href = 'https://wa.me/5492994274794?text=' + texto;
     });
   }
 })();
