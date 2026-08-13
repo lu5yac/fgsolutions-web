@@ -1,63 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://lu5yac.github.io/fgsolutions-web/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#servicios</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#automatizacion</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#inteligencia-artificial</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#business-intelligence</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#desarrollo-web</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#casos-de-uso</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#proceso</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#faq</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://fgsolutions.github.io/FG_SOLUTIONS_WEB/#contacto</loc>
-    <lastmod>2026-08-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
   </url>
 </urlset>
